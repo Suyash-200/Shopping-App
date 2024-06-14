@@ -134,7 +134,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   /* animation: fade-slide-in-from-top 0.3s ease-in-out; */
   position: fixed;
-  top: 13rem;
+  top: 6rem;
 }
 
 #modal::backdrop {

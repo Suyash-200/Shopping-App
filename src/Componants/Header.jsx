@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Model from "./Model";
+import { CartContext, ModelCartContext } from "../store/cart-context";
 
 export default function Header() {
+  const {totalLength} = useContext(CartContext);
   const [showModel, setShowModel] = useState(false);
 
   const handleModel = () => {
@@ -13,17 +15,19 @@ export default function Header() {
   };
 
   return (
-    <div>
-      {showModel && <Model cart={closeModel}></Model>}
+    <ModelCartContext.Provider value={{
+      closeModel
+    }}>
+      {showModel && <Model></Model>}
       <header id="main-header">
         <div id="main-title">
           <img src="logo.png" alt="Elegant model" />
           <h1>Elegant Context</h1>
         </div>
         <p>
-          <button onClick={handleModel}>Cart</button>
+          <button onClick={() =>handleModel()}>Cart({totalLength})</button>
         </p>
       </header>
-    </div>
+    </ModelCartContext.Provider>
   );
 }
